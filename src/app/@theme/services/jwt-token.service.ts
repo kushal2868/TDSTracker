@@ -27,71 +27,9 @@ export class JwtTokenService {
   getDecodeToken(moduleName) {
     this.tokens = jwt_decode(this.jwtToken);
     switch (moduleName) {
-      case 'quality':
-        return this.tokens.permissions.qu;
-
-      case 'party':
-        return this.tokens.permissions.pa;
-
-      case 'stockBatch':
-        return this.tokens.permissions.sb;
 
       case 'user':
-        return this.tokens.permissions.u;
-
-      case 'color':
-        return this.tokens.permissions.cs;
-
-      case 'program':
-        return this.tokens.permissions.prg;
-
-      case 'shade':
-        return this.tokens.permissions.sh;
-
-      case 'supplier':
-        return this.tokens.permissions.su;
-
-      case 'jetPlanning':
-        return this.tokens.permissions.jp;
-
-      case 'productionPlanning':
-        return this.tokens.permissions.pp;
-
-      case 'supplierRate':
-        return this.tokens.permissions.sr;
-
-      case 'dyeingProcess':
-        return this.tokens.permissions.pr;
-
-      case 'payment':
-        return this.tokens.permissions.pt;
-
-      case 'dispatch':
-        return this.tokens.permissions.d;
-
-      case 'batch':
-        return this.tokens.permissions.bf;
-
-      case 'machine':
-        return this.tokens.permissions.ip;
-
-      case 'waterJet':
-        return this.tokens.permissions.wt;
-
-      case 'admin':
-        return this.tokens.permissions.ad;
-
-      case 'dyeingSlip':
-        return this.tokens.permissions.ds;
-
-      case 'employee':
-        return this.tokens.permissions.emp;
-
-      case 'attendance':
-        return this.tokens.permissions.attnds;
-
-      case 'purchase':
-        return this.tokens.permissions.po;
+        return this.tokens.user;
 
       case 'userId':
         return this.tokens.id;
@@ -101,15 +39,6 @@ export class JwtTokenService {
 
       case 'userName':
         return this.tokens.userName;
-
-      case 'mergeBatch':
-        return this.tokens.permissions.mg;
-
-      case 'report':
-        return this.tokens.permissions.rpt;
-
-      case 'task':
-        return this.tokens.permissions.tt;
 
       case 'allPermissions':
         return this.tokens;

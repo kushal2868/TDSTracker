@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { NbAuthModule } from '@nebular/auth';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -14,6 +15,10 @@ import {
   NbIconModule,
   NbThemeModule,
   NbCardModule,
+  NbTreeGridModule,
+  NbInputModule,
+  NbRadioModule,
+  NbCheckboxModule,
 } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { NbSecurityModule } from '@nebular/security';
@@ -40,6 +45,7 @@ import { DEFAULT_THEME } from './styles/theme.default';
 import { COSMIC_THEME } from './styles/theme.cosmic';
 import { CORPORATE_THEME } from './styles/theme.corporate';
 import { DARK_THEME } from './styles/theme.dark';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 const NB_MODULES = [
   NbLayoutModule,
@@ -52,10 +58,15 @@ const NB_MODULES = [
   NbSecurityModule,
   NbButtonModule,
   NbSelectModule,
-  NbIconModule,
   NbEvaIconsModule,
+  NbAuthModule,
   NbCardModule,
-  NbAuthModule
+  NbTreeGridModule,
+  NbIconModule,
+  NbInputModule,
+  Ng2SmartTableModule,
+  NbRadioModule,
+  NbCheckboxModule
 ];
 const COMPONENTS = [
   HeaderComponent,
@@ -75,8 +86,8 @@ const PIPES = [
 ];
 
 @NgModule({
-  imports: [CommonModule, ...NB_MODULES],
-  exports: [CommonModule, ...PIPES, ...COMPONENTS,...NB_MODULES],
+  imports: [CommonModule, ...NB_MODULES, FormsModule],
+  exports: [CommonModule, ...PIPES, ...COMPONENTS, ...NB_MODULES],
   declarations: [...COMPONENTS, ...PIPES],
 })
 export class ThemeModule {
@@ -86,9 +97,9 @@ export class ThemeModule {
       providers: [
         ...NbThemeModule.forRoot(
           {
-            name: 'default',
+            name: 'cosmic',
           },
-          [ DEFAULT_THEME, COSMIC_THEME, CORPORATE_THEME, DARK_THEME ],
+          [DEFAULT_THEME, COSMIC_THEME, CORPORATE_THEME, DARK_THEME],
         ).providers,
       ],
     };

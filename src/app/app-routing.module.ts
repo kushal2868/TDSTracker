@@ -4,20 +4,19 @@ import { NgModule } from '@angular/core';
 import { ExtraOptions, RouterModule, Routes } from '@angular/router';
 
 export const routes: Routes = [
+  // {
+  //   path: 'auth',
+  //   loadChildren: () => import('./auth/auth.module')
+  //     .then(m => m.AuthModule),
+  // },
   {
     path: 'pages',
     loadChildren: () => import('./pages/pages.module')
       .then(m => m.PagesModule),
-      canActivate:[AuthGuard]
   },
-  {
-    path: 'auth',
-    loadChildren: () => import('./auth/auth.module')
-      .then(m => m.AuthModule),
-  },
-  {path:"**",redirectTo:"auth"},
-  { path: "", redirectTo: "auth", pathMatch: "full" },
-  { path: "**", redirectTo: "auth" },
+  { path: "**", redirectTo: "pages" },
+  { path: "", redirectTo: "pages", pathMatch: "full" },
+  { path: "**", redirectTo: "pages" },
 ];
 
 const config: ExtraOptions = {

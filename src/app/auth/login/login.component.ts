@@ -5,6 +5,7 @@ import { StoreTokenService } from '../../@theme/services/store-token.service';
 import { Md5 } from 'ts-md5/dist/md5';
 import { LoginModal } from '../../@theme/models/login';
 import { AuthService } from '../../@theme/services/auth.service';
+import { NbToastrService } from '@nebular/theme';
 
 @Component({
   selector: 'ngx-login',
@@ -20,7 +21,8 @@ export class LoginComponent {
     private route: Router,
     private authService: AuthService,
     private jwtToken: JwtTokenService,
-    private storeTokenService: StoreTokenService
+    private storeTokenService: StoreTokenService,
+    private toaster:NbToastrService
   ) {
     this.loginReq = new LoginModal();
   }
@@ -40,16 +42,16 @@ export class LoginComponent {
               data["data"].refreshToken
             );
             this.loginReq.password = '';
-            // this.toast.success("Login Successfull");
+            this.toaster.success("Login Successfull");
             this.route.navigate(["/pages"]);
           } else {
             this.loginReq.password = '';
-            // this.toast.error("Invalid UserName Or Password");
+            this.toaster.danger("Invalid UserName Or Password");
           }
         },
         (error) => {
           this.loginReq.password = '';
-          // this.toast.error("No internet access or Server failuer");
+          this.toaster.danger("No internet access or Server failuer");
         }
       );
     }

@@ -1,3 +1,4 @@
+import { UserModule } from './user/user.module';
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
@@ -5,6 +6,7 @@ import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ECommerceComponent } from './e-commerce/e-commerce.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
+import { CommonModuleGuard } from '../@theme/guards/common-module.guard';
 
 const routes: Routes = [{
   path: '',
@@ -67,6 +69,14 @@ const routes: Routes = [{
       path: 'miscellaneous',
       loadChildren: () => import('./miscellaneous/miscellaneous.module')
         .then(m => m.MiscellaneousModule),
+    },
+    {
+      path: 'user',
+      loadChildren: () => import('./user/user.module')
+        .then(m => m.UserModule),
+      // canActivate: [CommonModuleGuard],
+      // canLoad: [CommonModuleGuard],
+      data: { moduleName: "user" },
     },
     {
       path: '',

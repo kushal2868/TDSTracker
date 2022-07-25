@@ -12,6 +12,7 @@ import { Router } from "@angular/router";
 import { tap } from "rxjs/operators";
 import { JwtTokenService } from "../services/jwt-token.service";
 import { StoreTokenService } from "../services/store-token.service";
+import { NbToastrService } from "@nebular/theme";
 @Injectable()
 export class CustomHttpInterceptor implements HttpInterceptor {
   userId;
@@ -19,7 +20,7 @@ export class CustomHttpInterceptor implements HttpInterceptor {
   constructor(
     private router: Router,
     private injector: Injector,
-
+    private toaster:NbToastrService,
     private tokenService: StoreTokenService
   ) {
     // this.commonService.getUser();
@@ -50,7 +51,7 @@ export class CustomHttpInterceptor implements HttpInterceptor {
         },
         (err: any) => {
           if (err instanceof HttpErrorResponse) {
-            // this.toastr.error(err.error["msg"])
+            this.toaster.danger(err.error["msg"])
             // if (err.status === 401) {
             //   //this.authService.logout();
             //   // this.toasterService.error('Token Expired!');

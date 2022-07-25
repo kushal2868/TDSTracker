@@ -1,0 +1,11 @@
+.scroll-user-list {
+  min-height: 550px;
+  margin: -15px -10px;
+}
+
+@media screen and (min-width: 0px) and (max-width: 767px) {
+  .scroll-user-list {
+    min-height: 560px;
+    margin: -15px -10px;
+  }
+}
